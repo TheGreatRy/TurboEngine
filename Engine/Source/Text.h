@@ -1,7 +1,7 @@
 #pragma once
 #include "Font.h"
 
-class Color;
+struct Color;
 
 class Text
 {
