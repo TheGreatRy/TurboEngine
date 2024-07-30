@@ -45,9 +45,3 @@ private:
 	std::unique_ptr<Auydio> m_audio{ nullptr };
 	std::unique_ptr<ParticleSystem> m_partSys{ nullptr };
 };
-
-extern Engine g_engine;
-
-#define RENDERER g_engine.GetRenderer()
-#define INPUT g_engine.GetInput()
-#define AUDIO g_engine.GetAudio()
