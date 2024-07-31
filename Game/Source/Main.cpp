@@ -11,11 +11,9 @@ int main(int argc, char* argv[]) {
 
 	engine->Initalize();
 
-#ifdef _DEBUG
-	std::cout << "debug\n";
-#endif
+	File::SetFilePath("Assets");
 
-	
+	std::cout << File::GetFilePath() << endl;
 
 	while (!engine->IsQuit()) 
 	{
