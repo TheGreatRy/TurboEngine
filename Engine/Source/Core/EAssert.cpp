@@ -1,4 +1,4 @@
-#include "EAssert.h"
+#include "../Core/EAssert.h"
 #include <iostream>
 
 void CustomAssert(const std::string& expression, const std::string& filename, int line)

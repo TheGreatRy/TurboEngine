@@ -1,4 +1,4 @@
-#include "Model.h"
+#include "../Renderer/Model.h"
 
 void Model::Draw(Renderer& renderer, const Vector2& position, float angle, float scale)
 {

@@ -1,6 +1,6 @@
 #pragma once
 #include <cmath>
-#include "MathUtil.h"
+#include "../Math/MathUtil.h"
 
 struct Vector2
 {

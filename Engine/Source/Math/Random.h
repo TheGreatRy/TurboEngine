@@ -1,6 +1,6 @@
 #pragma once
-#include "Vector2.h"
-#include "MathUtil.h"
+#include "../Math/Vector2.h"
+#include "../Math/MathUtil.h"
 #include <random>
 
 inline int random() { return rand(); }

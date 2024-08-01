@@ -1,6 +1,6 @@
-#include "Scene.h"
-#include "Actor.h"
-#include "Model.h"
+#include "../Framework/Scene.h"
+#include "../Framework/Actor.h"
+#include "../Renderer/Model.h"
 #include <algorithm>
 
 void Scene::Update(float dt)

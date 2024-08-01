@@ -1,6 +1,6 @@
-#include "Text.h"
-#include "Font.h"
-#include "Color.h"
+#include "../Renderer/Text.h"
+#include "../Renderer/Font.h"
+#include "../Renderer/Color.h"
 
 Text::~Text()
 {
