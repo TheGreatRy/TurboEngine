@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <SDL_image.h>
 #include <string>
 using namespace std;
 
@@ -27,6 +28,9 @@ public:
 	void DrawRect(float x, float y, float w, float h);
 
 	friend class Text;
+	friend class Texture;
+	void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
+
 private:
 	SDL_Window* m_window{ nullptr };
 	SDL_Renderer* m_renderer{ nullptr };

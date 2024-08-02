@@ -99,7 +99,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmod_vc.lib;
-sdl2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -119,7 +119,7 @@ sdl2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)Engine\Source</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmod_vc.lib;
-sdl2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -135,7 +135,7 @@ sdl2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmod_vc.lib;
-sdl2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -155,7 +155,7 @@ sdl2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)Engine\Source</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmod_vc.lib;
-sdl2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
