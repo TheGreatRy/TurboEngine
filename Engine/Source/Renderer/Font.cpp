@@ -1,4 +1,5 @@
 #include "../Renderer/Font.h"
+#include <iostream>
 
 Font::~Font()
 {
@@ -6,6 +7,16 @@ Font::~Font()
 	{
 		TTF_CloseFont(m_ttfFont);
 	}
+}
+
+bool Font::Create(std::string name, ...)
+{
+	va_list args;
+	va_start(args, name);
+	int fontSize = va_arg(args, int);
+	va_end(args);
+
+	return Load(name, fontSize);
 }
 
 bool Font::Load(const std::string& name, int fontSize)

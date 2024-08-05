@@ -11,13 +11,14 @@ int main(int argc, char* argv[]) {
 
 	engine->Initalize();
 
+
 	File::SetFilePath("Assets");
 
 	std::cout << File::GetFilePath() << endl;
-	// create texture, using shared_ptr so texture can be shared
-	std::shared_ptr<Texture> texture = std::make_shared<Texture>();
-	texture->Load("monty.jpg", engine->GetRenderer());
 
+	// create texture, using shared_ptr so texture can be shared
+
+	res_t<Texture> texture = ResourceManager::Instance().Get<Texture>("monty.jpg", engine->GetRenderer());
 
 	while (!engine->IsQuit()) 
 	{

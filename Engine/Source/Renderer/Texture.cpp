@@ -1,7 +1,6 @@
-#include "Texture.h"
-#include "Math/Vector2.h"
-#include "Renderer/Renderer.h"
-#include <cassert>
+#include "../Renderer/Texture.h"
+#include "../Math/Vector2.h"
+#include "../Renderer/Renderer.h"
 #include <crtdbg.h>
 #include <iostream>
 
@@ -9,6 +8,16 @@ Texture::~Texture()
 {
 	// if texture exists, destroy texture
 	if (m_texture) SDL_DestroyTexture(m_texture);
+}
+
+bool Texture::Create(std::string name, ...)
+{
+    va_list args;
+    va_start(args, name);
+    Renderer renderer = va_arg(args, Renderer);
+    va_end(args);
+
+    return Load(name, renderer);
 }
 
 bool Texture::Load(const std::string& filename, Renderer& renderer)

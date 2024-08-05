@@ -1,6 +1,7 @@
 #include "../Renderer/Text.h"
 #include "../Renderer/Font.h"
 #include "../Renderer/Color.h"
+#include <iostream>
 
 Text::~Text()
 {

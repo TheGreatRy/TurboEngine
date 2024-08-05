@@ -13,6 +13,9 @@
 #include "Renderer/Model.h"
 #include "Renderer/Color.h"
 #include "Renderer/Texture.h"
+//resources
+#include "Resources/Resource.h"
+#include "Resources/ResourceManager.h"
 //input
 #include "Input/Input.h"
 //audio
