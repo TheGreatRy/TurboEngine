@@ -1,6 +1,7 @@
 #pragma once
 #include "../Resources/Resource.h"
 #include <string>
+
 struct Vector2;
 
 class Texture : public Resource

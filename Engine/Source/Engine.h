@@ -6,6 +6,15 @@
 #include "Core/EFile.h"
 
 //systems
+// framework
+#include "Framework/Actor.h"
+#include "Framework/Game.h"
+#include "Framework/Object.h"
+#include "Framework/Scene.h"
+//components
+#include "Components/Component.h"
+#include "Components/RenderComponent.h"
+#include "Components/TextureComponent.h"
 //renderer
 #include "Renderer/Renderer.h"
 #include "Renderer/ParticleSystem.h"
@@ -13,6 +22,8 @@
 #include "Renderer/Model.h"
 #include "Renderer/Color.h"
 #include "Renderer/Texture.h"
+#include "Renderer/Text.h"
+#include "Renderer/Font.h"
 //resources
 #include "Resources/Resource.h"
 #include "Resources/ResourceManager.h"
