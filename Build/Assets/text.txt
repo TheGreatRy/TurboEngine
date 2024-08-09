@@ -1,5 +1,0 @@
-{
-	"name": "Ry",
-	"age": 19,
-	"isAwake": false
-}

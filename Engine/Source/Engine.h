@@ -6,6 +6,7 @@
 #include "Core/EFile.h"
 #include "Core/Json.h"
 #include "Core/Singleton.h"
+#include "Core/Factory.h"
 
 //systems
 // framework

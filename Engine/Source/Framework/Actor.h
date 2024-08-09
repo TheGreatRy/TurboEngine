@@ -12,9 +12,11 @@ class Scene;
 class Actor : public Object
 {
 public:
+	CLASS_DECLARATION(Actor)
+		
 	Actor() = default;
 	Actor(const Transform transform) : m_transform {transform} {}
-	
+
 	virtual void Update(float dt);
 	virtual void Draw(Renderer& renderer);
 
@@ -22,6 +24,7 @@ public:
 	void SetLifespan(float lifespan) { m_lifespan = lifespan; }
 
 	const Transform& GetTransform() { return m_transform; }
+	void SetTransform(const Transform& transform) { m_transform = transform; }
 	void SetTag(const std::string& tag) { m_tag = tag; }
 	std::string& GetTag() { return m_tag; }
 	void AddComponent(std::unique_ptr<Component> component);
