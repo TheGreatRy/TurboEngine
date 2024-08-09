@@ -14,9 +14,10 @@ int main(int argc, char* argv[])
 
 	File::SetFilePath("Assets");
 
+	
 	std::string s;
 	File::ReadFile("text.txt", s);
-	std::cout << s;
+	//std::cout << s;
 
 	rapidjson::Document document;
 	Json::Load("text.txt", document);
@@ -25,13 +26,15 @@ int main(int argc, char* argv[])
 	int age;
 	bool isAwake;
 
-	//READ_DATA(document, age);
+	READ_DATA(document, name);
+	READ_DATA(document, age);
+	READ_DATA(document, isAwake);
 
-	Json::Read(document, "name", name);
-	Json::Read(document, "age", age);
-	Json::Read(document, "isAwake", isAwake);
+	//Json::Read(document, "name", name);
+	//Json::Read(document, "age", age);
+	//Json::Read(document, "isAwake", isAwake);
 
-	
+	std::cout << "Name: " << name << " Age: " << age << " Awake?: " << isAwake << std::endl;
 
 	std::cout << File::GetFilePath() << endl;
 
