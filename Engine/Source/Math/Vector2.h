@@ -4,8 +4,8 @@
 
 struct Vector2
 {
-	float x;
-	float y;
+	float x = 0;
+	float y = 0;
 
 	Vector2() = default;
 	Vector2(float x, float y) { this->x = x; this->y = y; }

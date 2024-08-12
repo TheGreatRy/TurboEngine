@@ -9,12 +9,13 @@ void Actor::Initialize()
 	}
 }
 
+
 void Actor::Update(float dt)
 {
-	if (m_lifespan != 0)
+	if (lifespan != 0)
 	{
-		m_lifespan -= dt;
-		if (m_lifespan <= 0)
+		lifespan -= dt;
+		if (lifespan <= 0)
 		{
 			m_destroy = true;
 		}
@@ -25,6 +26,19 @@ void Actor::Update(float dt)
 	}
 	m_transform.position += (m_velocity * dt);
 	m_velocity *= 1.0f / (1.0f + m_damping * dt);
+}
+
+void Actor::Read(const json_t& value)
+{
+	Object::Read(value);
+
+	READ_DATA(value, tag);
+	READ_DATA(value, lifespan);
+}
+
+void Actor::Write(json_t& value)
+{
+
 }
 
 void Actor::Draw(Renderer& renderer)
