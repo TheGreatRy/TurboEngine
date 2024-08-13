@@ -1,20 +1,45 @@
-#include "../Framework/Scene.h"
-#include "../Framework/Actor.h"
-#include "../Renderer/Model.h"
+#include "Scene.h"
+#include "Actor.h"
+#include "Core/Factory.h"
 #include <algorithm>
 
+void Scene::Read(const json_t& value)
+{
+	if (HAS_DATA(value, actors) && GET_DATA(value, actors).IsArray())
+	{
+		for (auto& actorVal : GET_DATA(value, actors).GetArray())
+		{
+			auto actor = Factory::Instance().Create<Actor>(Actor::GetTypeName());
+			actor->Read(actorVal);
+
+			AddActor(std::move(actor));
+		}
+	}
+}
+
+void Scene::Write(json_t& value)
+{
+}
+
+void Scene::Initialize()
+{
+	for (auto& actor : actors)
+	{
+		actor->Initialize();
+	}
+}
 void Scene::Update(float dt)
 {
 	// update
-	for (auto& actor : m_actors)
+	for (auto& actor : actors)
 	{
 		actor->Update(dt);
 	}
 	//destroy
-	std::erase_if(m_actors, [](auto& actor) {return actor->m_destroy;});
+	std::erase_if(actors, [](auto& actor) {return actor->destroyed;});
 
 	//collision
-	for (auto& actor1 : m_actors)
+	/*for (auto& actor1 : m_actors)
 	{
 		for (auto& actor2 : m_actors)
 		{
@@ -30,13 +55,13 @@ void Scene::Update(float dt)
 				actor2->OnCollision(actor1.get());
 			}
 		}
-	}
+	}*/
 
 }
 
 void Scene::Draw(Renderer& renderer)
 {
-	for (auto& actor : m_actors)
+	for (auto& actor : actors)
 	{
 		actor->Draw(renderer);
 	}
@@ -44,11 +69,12 @@ void Scene::Draw(Renderer& renderer)
 
 void Scene::AddActor(std::unique_ptr<Actor> actor)
 {
-	actor->m_scene = this;
-	m_actors.push_back(std::move(actor));
+	actor->scene = this;
+	actors.push_back(std::move(actor));
 }
 
 void Scene::RemoveAll()
 {
-	m_actors.clear();
+	actors.clear();
 }
+

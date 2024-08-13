@@ -1,9 +1,10 @@
-#include "../Framework/Actor.h"
-#include "../Components/RenderComponent.h"
+#include "Framework/Actor.h"
+#include "Core/Factory.h"
+#include "Components/RenderComponent.h"
 
 void Actor::Initialize()
 {
-	for (auto& component : m_components)
+	for (auto& component : components)
 	{
 		component->Initialize();
 	}
@@ -17,15 +18,15 @@ void Actor::Update(float dt)
 		lifespan -= dt;
 		if (lifespan <= 0)
 		{
-			m_destroy = true;
+			destroyed = true;
 		}
 	}
-	for (auto& component : m_components)
+	for (auto& component : components)
 	{
 		component->Update(dt);
 	}
-	m_transform.position += (m_velocity * dt);
-	m_velocity *= 1.0f / (1.0f + m_damping * dt);
+	/*transform.position += (m_velocity * dt);
+	m_velocity *= 1.0f / (1.0f + m_damping * dt);*/
 }
 
 void Actor::Read(const json_t& value)
@@ -34,6 +35,24 @@ void Actor::Read(const json_t& value)
 
 	READ_DATA(value, tag);
 	READ_DATA(value, lifespan);
+
+	if (HAS_DATA(value, transform)) transform.Read(GET_DATA(value, transform));
+
+	//read components
+
+	if (HAS_DATA(value, components) && GET_DATA(value, components).IsArray())
+	{
+		for (auto& componentVal: GET_DATA(value, components).GetArray())
+		{
+			std::string type;
+			READ_DATA(componentVal, type);
+
+			auto component = Factory::Instance().Create<Component>(type);
+			component->Read(componentVal);
+
+			AddComponent(std::move(component));
+		}
+	}
 }
 
 void Actor::Write(json_t& value)
@@ -43,8 +62,8 @@ void Actor::Write(json_t& value)
 
 void Actor::Draw(Renderer& renderer)
 {
-	if (m_destroy) return;
-	for (auto& component : m_components)
+	if (destroyed) return;
+	for (auto& component : components)
 	{
 		RenderComponent* renderComp = dynamic_cast<RenderComponent*>(component.get());
 		if (renderComp)
@@ -57,7 +76,7 @@ void Actor::Draw(Renderer& renderer)
 void Actor::AddComponent(std::unique_ptr<Component> component)
 {
 	component->owner = this;
-	m_components.push_back(std::move(component));
+	components.push_back(std::move(component));
 }
 
 

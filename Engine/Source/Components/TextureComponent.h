@@ -5,7 +5,7 @@
 class TextureComponent : public RenderComponent
 {
 public:
-	CLASS_DECLARATION(TextureComponent)
+	CLASS_DECLARATION(TextureComponent);
 
 	void Initialize() override;
 	void Update(float dt) override;

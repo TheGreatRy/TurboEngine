@@ -14,45 +14,26 @@ int main(int argc, char* argv[])
 
 	engine->Initalize();
 
+	std::unique_ptr<Scene> scene = std::make_unique<Scene>(engine.get());
+
 	File::SetFilePath("Assets");
+	std::cout << File::GetFilePath() << endl;
 
 	
-	std::string s;
-	File::ReadFile("test.txt", s);
-	//std::cout << s;
+	std::string buffer;
+	File::ReadFile("Scenes/scene.json", buffer);
+	std::cout << buffer << std::endl;
 
 	rapidjson::Document document;
-	Json::Load("test.txt", document);
+	Json::Load("Scenes/scene.json", document);
 
-	std::string name;
-	int age;
-	bool isAwake;
-	float speed;
-	Vector2 position;
-	Color color;
+	scene->Read(document);
+	scene->Initialize();
 
-
-	READ_DATA(document, name);
-	READ_DATA(document, age);
-	READ_DATA(document, isAwake);
-	READ_DATA(document, speed);
-	READ_DATA(document, position);
-	READ_DATA(document, color);
-
-	//Json::Read(document, "speed", speed);
-	//Json::Read(document, "name", name);
-	//Json::Read(document, "age", age);
-	//Json::Read(document, "isAwake", isAwake);
-
-	std::cout << "Name: " << name << " Age: " << age << " Awake?: " << isAwake << std::endl;
-	std::cout << speed << std::endl;
-	std::cout << position.x << " " << position.y << std::endl;
-	std::cout << color.r << " " << color.g << " " << color.b << " " << color.a << std::endl;
-
-	std::cout << File::GetFilePath() << endl;
 
 	{
 		// create texture, using shared_ptr so texture can be shared
+		/*
 		res_t<Texture> texture = ResourceManager::Instance().Get<Texture>("monty.jpg", engine->GetRenderer());
 		res_t<Font> font = ResourceManager::Instance().Get<Font>("ka1.ttf", 12);
 		std::unique_ptr<Text> text = std::make_unique<Text>(font);
@@ -60,28 +41,25 @@ int main(int argc, char* argv[])
 
 		Transform t{ {30,30} };
 		std::unique_ptr<Actor> actor = Factory::Instance().Create<Actor>(Actor::GetTypeName());
-		actor->SetTransform(t);
+		actor->transform = t;
 		std::unique_ptr<TextureComponent> textureComp = Factory::Instance().Create<TextureComponent>(TextureComponent::GetTypeName());
 		textureComp->texture = texture;
 		actor->AddComponent(std::move(textureComp));
+		*/
 
 		while (!engine->IsQuit())
 		{
+			//Update
 			engine->Update();
+			scene->Update(engine->GetTime().GetDeltaTime());
 
-			actor->Update(engine->GetTime().GetDeltaTime());
-
+			//actor->Update(engine->GetTime().GetDeltaTime());
+			//Renderer
 			engine->GetRenderer().SetColor(0, 0, 0, 0);
-
 			engine->GetRenderer().BeginFrame();
 
-			//engine->GetRenderer().DrawTexture(texture.get(), 30, 30);
-
-			actor->Draw(engine->GetRenderer());
-
-			text->Draw(engine->GetRenderer(), 100, 100);
-
-			engine->GetPartSys().Draw(engine->GetRenderer());
+			//Draw
+			scene->Draw(engine->GetRenderer());
 
 			engine->GetRenderer().EndFrame();
 		}
