@@ -31,5 +31,5 @@ void TextureComponent::Write(json_t& value)
 void TextureComponent::Draw(Renderer& renderer)
 {
 	Transform transform = owner->transform;
-	renderer.DrawTexture(texture.get(), transform.position.x, transform.position.y, transform.rotation);
+	renderer.DrawTexture(texture.get(), transform);
 }

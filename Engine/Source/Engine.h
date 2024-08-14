@@ -20,6 +20,8 @@
 #include "Components/Component.h"
 #include "Components/RenderComponent.h"
 #include "Components/TextureComponent.h"
+#include "Components/PhysicsComponent.h"
+#include "Components/EnginePhysComponent.h"
 //renderer
 #include "Renderer/Renderer.h"
 #include "Renderer/ParticleSystem.h"

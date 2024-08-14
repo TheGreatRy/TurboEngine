@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 #include <string>
 using namespace std;
+struct Transform;
 
 class Renderer
 {
@@ -30,6 +31,10 @@ public:
 	friend class Text;
 	friend class Texture;
 	void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
+	void DrawTexture(class Texture* texture, const Transform& transform, bool hflip = false);
+
+	friend class Text;
+	friend struct Transfrom;
 
 private:
 	SDL_Window* m_window{ nullptr };
