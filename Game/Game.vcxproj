@@ -99,8 +99,12 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fmod_vc.lib;
-sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sdl2main.lib
+;sdl2.lib
+;sdl2_ttf.lib
+;sdl2_image.lib;
+fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/WHOLEARCHIVE:Engine %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,8 +124,12 @@ sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)Engine\Source</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fmod_vc.lib;
-sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sdl2main.lib
+;sdl2.lib
+;sdl2_ttf.lib
+;sdl2_image.lib;
+fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/WHOLEARCHIVE:Engine %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -137,8 +145,12 @@ sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fmod_vc.lib;
-sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sdl2main.lib
+;sdl2.lib
+;sdl2_ttf.lib
+;sdl2_image.lib;
+fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/WHOLEARCHIVE:Engine %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -158,8 +170,12 @@ sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)Engine\Source</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fmod_vc.lib;
-sdl2_ttf.lib;sdl2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sdl2main.lib
+;sdl2.lib
+;sdl2_ttf.lib
+;sdl2_image.lib;
+fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/WHOLEARCHIVE:Engine %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

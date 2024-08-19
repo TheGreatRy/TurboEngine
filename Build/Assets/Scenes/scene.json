@@ -1,6 +1,21 @@
 {
     "actors": [
         {
+            "name": "background",
+            "transform": {
+                "position": [ 0, 0 ],
+                "rotation": 0,
+                "scale": 1.5
+            },
+            "components": [
+                {
+                    "type": "TextureComponent",
+                    "textureName": "monty.jpg"
+                }
+            ]
+
+        },
+        {
             "name": "player",
             "transform": {
                 "position": [ 60, 60 ],
@@ -15,17 +30,21 @@
                 {
                     "type": "EnginePhysComponent",
                     "velocity": [ 0, 0 ],
-                    "damping":  0.0
+                    "damping": 0.0
                 },
                 {
                     "type": "PlayerComponent",
                     "speed": 100
+                },
+                {
+                    "type": "CircleCollisionComponent",
+                    "radius": 24
                 }
             ]
         },
 
         {
-            "name": "enemey",
+            "name": "enemy",
             "transform": {
                 "position": [ 240, 60 ],
                 "rotation": 90,
@@ -35,6 +54,27 @@
                 {
                     "type": "TextureComponent",
                     "textureName": "monty.jpg"
+                },
+                {
+                    "type": "CircleCollisionComponent",
+                    "radius": 24
+                }
+            ]
+        },
+        {
+            "name": "text",
+            "transform": {
+                "position": [ 240, 60 ],
+                "rotation": 0,
+                "scale": 1
+            },
+            "components": [
+                {
+                    "type": "TextComponent",
+                    "text": "Hello World",
+                    "fontName": "ka1.ttf",
+                    "fontSize": 24,
+                    "color": [ 0, 1, 0, 1 ]
                 }
             ]
         }

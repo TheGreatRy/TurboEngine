@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "Actor.h"
 #include "Core/Factory.h"
+#include "Components/CollisionComponent.h"
 #include <algorithm>
 
 void Scene::Read(const json_t& value)
@@ -33,29 +34,33 @@ void Scene::Update(float dt)
 	// update
 	for (auto& actor : actors)
 	{
-		actor->Update(dt);
+		if(actor->active) actor->Update(dt);
 	}
 	//destroy
 	std::erase_if(actors, [](auto& actor) {return actor->destroyed;});
 
 	//collision
-	/*for (auto& actor1 : m_actors)
+	for (auto& actor1 : actors)
 	{
-		for (auto& actor2 : m_actors)
+		CollisionComponent* collision1 = actor1->GetComponent<CollisionComponent>();
+		if (!collision1) continue;
+
+		for (auto& actor2 : actors)
 		{
-			if (actor1 == actor2 || (actor1->m_destroy || actor2->m_destroy)) continue;
+			if (actor1 == actor2) continue;
 
-			Vector2 direction = actor1->GetTransform().position - actor2->GetTransform().position;
-			float distance = direction.Length();
-			float radius = actor1->GetRadius() + actor2->GetRadius();
+			CollisionComponent* collision2 = actor2->GetComponent<CollisionComponent>();
+			if (!collision2) continue;
 
-			if (distance <= radius)
+			if (collision1->CheckCollision(collision2))
 			{
-				actor1->OnCollision(actor2.get());
-				actor2->OnCollision(actor1.get());
+				//std::cout << "hit!\n";
+				if (actor1->OnCollisionEnter) actor1->OnCollisionEnter(actor2.get());
+				if (actor2->OnCollisionEnter) actor2->OnCollisionEnter(actor1.get());
 			}
+			
 		}
-	}*/
+	}
 
 }
 
@@ -63,7 +68,7 @@ void Scene::Draw(Renderer& renderer)
 {
 	for (auto& actor : actors)
 	{
-		actor->Draw(renderer);
+		if(actor->active) actor->Draw(renderer);
 	}
 }
 

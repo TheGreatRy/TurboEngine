@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <functional>
 
 class Renderer;
 class Scene;
@@ -12,6 +13,8 @@ class Scene;
 class Actor : public Object
 {
 public:
+	
+
 	Actor() = default;
 	Actor(const Transform transform) : transform {transform} {}
 
@@ -21,6 +24,8 @@ public:
 
 	virtual void Update(float dt);
 	virtual void Draw(Renderer& renderer);
+
+	std::function<void(Actor*)> OnCollisionEnter;
 	
 	void AddComponent(std::unique_ptr<Component> component);
 

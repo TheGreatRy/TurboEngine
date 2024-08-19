@@ -1,5 +1,5 @@
 #pragma once
-#include "../Framework/Object.h"
+#include "Framework/Object.h"
 
 class Component : public Object
 {

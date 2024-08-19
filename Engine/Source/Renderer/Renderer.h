@@ -3,6 +3,8 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 #include <string>
+#include <memory>
+
 using namespace std;
 struct Transform;
 
@@ -28,12 +30,12 @@ public:
 	void DrawRect(int x, int y, int w, int h);
 	void DrawRect(float x, float y, float w, float h);
 
-	friend class Text;
-	friend class Texture;
-	void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
-	void DrawTexture(class Texture* texture, const Transform& transform, bool hflip = false);
+	void DrawTexture(std::weak_ptr<class Texture> texture, float x, float y, float angle = 0.0f);
+	void DrawTexture(std::weak_ptr<class Texture> texture, const Transform& transform, bool hflip = false);
+
 
 	friend class Text;
+	friend class Texture;
 	friend struct Transfrom;
 
 private:

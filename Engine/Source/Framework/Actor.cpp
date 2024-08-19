@@ -2,6 +2,8 @@
 #include "Core/Factory.h"
 #include "Components/RenderComponent.h"
 
+FACTORY_REGISTER(Actor)
+
 void Actor::Initialize()
 {
 	for (auto& component : components)
@@ -46,6 +48,10 @@ void Actor::Read(const json_t& value)
 			READ_DATA(componentVal, type);
 
 			auto component = Factory::Instance().Create<Component>(type);
+			if (!component)
+			{
+				std::cerr << "Could not create component: " << type << std::endl;
+			}
 			component->Read(componentVal);
 
 			AddComponent(std::move(component));

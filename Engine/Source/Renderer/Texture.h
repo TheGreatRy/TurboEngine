@@ -1,14 +1,18 @@
 #pragma once
-#include "../Resources/Resource.h"
+#include "Resources/Resource.h"
+#include "Math/Vector2.h"
 #include <string>
 
 struct Vector2;
+struct SDL_Texture;
 
 class Texture : public Resource
 {	
 public:
 	friend class Renderer;
+
 	Texture() = default;
+	Texture(SDL_Texture* texture) : m_texture{ texture } {};
 	~Texture();
 	bool Create(std::string name, ...) override;
 	bool Load(const std::string& filename, class Renderer& renderer);
@@ -16,5 +20,5 @@ public:
 	Vector2 GetSize();
 
 private:
-	struct SDL_Texture* m_texture{ nullptr };
+	SDL_Texture* m_texture{ nullptr };
 };

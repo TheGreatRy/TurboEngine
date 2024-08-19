@@ -1,6 +1,6 @@
 #pragma once
 #include "RenderComponent.h"
-#include "../Renderer/Texture.h"
+#include "Renderer/Texture.h"
 
 class TextureComponent : public RenderComponent
 {

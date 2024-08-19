@@ -103,9 +103,9 @@ void Renderer::DrawRect(float x, float y, float w, float h)
 
 }
 
-void Renderer::DrawTexture(Texture* texture, float x, float y, float angle)
+void Renderer::DrawTexture(std::weak_ptr<Texture> texture, float x, float y, float angle)
 {
-	Vector2 size = texture->GetSize();
+	Vector2 size = texture.lock()->GetSize();
 
 	SDL_FRect destRect;
 	destRect.x = x;
@@ -114,12 +114,12 @@ void Renderer::DrawTexture(Texture* texture, float x, float y, float angle)
 	destRect.h = size.y;
 
 	// https://wiki.libsdl.org/SDL2/SDL_RenderCopyExF
-	SDL_RenderCopyExF(m_renderer, texture->m_texture, NULL, &destRect, angle, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyExF(m_renderer, texture.lock()->m_texture, NULL, &destRect, angle, NULL, SDL_FLIP_NONE);
 }
 
-void Renderer::DrawTexture(Texture* texture, const Transform& transform, bool hflip)
+void Renderer::DrawTexture(std::weak_ptr<Texture> texture, const Transform& transform, bool hflip)
 {
-	Vector2 size = texture->GetSize() * transform.scale;
+	Vector2 size = texture.lock()->GetSize() * transform.scale;
 
 	SDL_FRect destRect;
 	destRect.x = transform.position.x;
@@ -128,5 +128,5 @@ void Renderer::DrawTexture(Texture* texture, const Transform& transform, bool hf
 	destRect.h = size.y;
 
 	// https://wiki.libsdl.org/SDL2/SDL_RenderCopyExF
-	SDL_RenderCopyExF(m_renderer, texture->m_texture, NULL, &destRect, transform.rotation, NULL, (hflip) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+	SDL_RenderCopyExF(m_renderer, texture.lock()->m_texture, NULL, &destRect, transform.rotation, NULL, (hflip) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }

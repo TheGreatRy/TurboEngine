@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "../Math/Vector2.h"
-#include "../Renderer/Color.h"
+#include "Math/Vector2.h"
+#include "Renderer/Color.h"
 #include <array>
 #include <iostream>
 #include <rapidjson/document.h>

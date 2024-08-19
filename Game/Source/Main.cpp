@@ -8,12 +8,6 @@
 
 int main(int argc, char* argv[])
 {
-	Factory::Instance().Register<Actor>(Actor::GetTypeName());
-	Factory::Instance().Register<TextureComponent>(TextureComponent::GetTypeName());
-	Factory::Instance().Register<EnginePhysComponent>(EnginePhysComponent::GetTypeName());
-	Factory::Instance().Register<PlayerComponent>(PlayerComponent::GetTypeName());
-
-
 	std::unique_ptr<Engine> engine = std::make_unique<Engine>();
 
 	engine->Initalize();
@@ -24,9 +18,9 @@ int main(int argc, char* argv[])
 	std::cout << File::GetFilePath() << endl;
 
 	
-	std::string buffer;
-	File::ReadFile("Scenes/scene.json", buffer);
-	std::cout << buffer << std::endl;
+	//std::string buffer;
+	//File::ReadFile("Scenes/scene.json", buffer);
+	//std::cout << buffer << std::endl;
 
 	rapidjson::Document document;
 	Json::Load("Scenes/scene.json", document);
@@ -57,7 +51,11 @@ int main(int argc, char* argv[])
 			engine->Update();
 			scene->Update(engine->GetTime().GetDeltaTime());
 
-			//actor->Update(engine->GetTime().GetDeltaTime());
+			auto* actor = scene->GetActor<Actor>("text");
+			if (actor)
+			{
+				actor->Update(engine->GetTime().GetDeltaTime());
+			}
 			//Renderer
 			engine->GetRenderer().SetColor(0, 0, 0, 0);
 			engine->GetRenderer().BeginFrame();
@@ -69,6 +67,7 @@ int main(int argc, char* argv[])
 		}
 	}
 
+	scene->RemoveAll();
 	ResourceManager::Instance().Clear();
 	engine->Shutdown();
 	return 0;

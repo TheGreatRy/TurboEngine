@@ -4,6 +4,7 @@
 #include "Renderer/Renderer.h"
 #include "Engine.h"
 
+FACTORY_REGISTER(TextureComponent)
 
 void TextureComponent::Initialize()
 {
@@ -31,5 +32,5 @@ void TextureComponent::Write(json_t& value)
 void TextureComponent::Draw(Renderer& renderer)
 {
 	Transform transform = owner->transform;
-	renderer.DrawTexture(texture.get(), transform);
+	renderer.DrawTexture(texture, transform);
 }
