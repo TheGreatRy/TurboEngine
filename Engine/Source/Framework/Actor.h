@@ -16,9 +16,11 @@ public:
 	
 
 	Actor() = default;
+	Actor(const Actor& other);
 	Actor(const Transform transform) : transform {transform} {}
 
 	CLASS_DECLARATION(Actor)
+	CLASS_PROTOTYPE(Actor)
 
 	void Initialize() override;
 

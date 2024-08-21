@@ -12,6 +12,21 @@ void Actor::Initialize()
 	}
 }
 
+Actor::Actor(const Actor& other)
+{
+	tag = other.tag;
+	lifespan = other.lifespan;
+	destroyed = other.destroyed;
+
+	transform = other.transform;
+	scene = other.scene;
+
+	for (auto& component : other.components)
+	{
+		auto clone =std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
+		AddComponent(std::move(clone));
+	}
+}
 
 void Actor::Update(float dt)
 {
@@ -28,6 +43,7 @@ void Actor::Update(float dt)
 		component->Update(dt);
 	}
 }
+
 
 void Actor::Read(const json_t& value)
 {

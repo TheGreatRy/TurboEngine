@@ -3,14 +3,14 @@
         {
             "name": "background",
             "transform": {
-                "position": [ 0, 0 ],
+                "position": [ 400, 300 ],
                 "rotation": 0,
                 "scale": 1.5
             },
             "components": [
                 {
                     "type": "TextureComponent",
-                    "textureName": "monty.jpg"
+                    "textureName": "Textures/Green_Nebula.png"
                 }
             ]
 
@@ -25,7 +25,7 @@
             "components": [
                 {
                     "type": "TextureComponent",
-                    "textureName": "monty.jpg"
+                    "textureName": "Textures/monty.jpg"
                 },
                 {
                     "type": "EnginePhysComponent",
@@ -42,7 +42,38 @@
                 }
             ]
         },
+        {
+            "name": "rocket",
+            "transform": {
+                "position": [ 60, 60 ],
+                "rotation": 0,
+                "scale": 1
+            },
+            "components": [
+                {
+                    "type": "TextureComponent",
+                    "textureName": "Textures/monty.jpg"
+                },
+                {
+                    "type": "EnginePhysComponent",
+                    "velocity": [ 0, 0 ],
+                    "damping": 0.0
+                },
+                {
+                    "type": "PlayerComponent",
+                    "speed": 100
+                },
+                {
+                    "type": "RocketComponent",
+                    "speed": 100
 
+                },
+                {
+                    "type": "CircleCollisionComponent",
+                    "radius": 24
+                }
+            ]
+        },
         {
             "name": "enemy",
             "transform": {
@@ -53,7 +84,7 @@
             "components": [
                 {
                     "type": "TextureComponent",
-                    "textureName": "monty.jpg"
+                    "textureName": "Textures/monty.jpg"
                 },
                 {
                     "type": "CircleCollisionComponent",
@@ -72,7 +103,7 @@
                 {
                     "type": "TextComponent",
                     "text": "Hello World",
-                    "fontName": "ka1.ttf",
+                    "fontName": "Fonts/ka1.ttf",
                     "fontSize": 24,
                     "color": [ 0, 1, 0, 1 ]
                 }

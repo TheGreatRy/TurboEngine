@@ -122,8 +122,8 @@ void Renderer::DrawTexture(std::weak_ptr<Texture> texture, const Transform& tran
 	Vector2 size = texture.lock()->GetSize() * transform.scale;
 
 	SDL_FRect destRect;
-	destRect.x = transform.position.x;
-	destRect.y = transform.position.y;
+	destRect.x = transform.position.x - size.x * 0.5f;
+	destRect.y = transform.position.y - size.x * 0.5f;
 	destRect.w = size.x;
 	destRect.h = size.y;
 
