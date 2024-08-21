@@ -78,7 +78,7 @@
             "name": "enemy",
             "transform": {
                 "position": [ 240, 60 ],
-                "rotation": 90,
+                "rotation": 0,
                 "scale": 0.5
             },
             "components": [
@@ -95,7 +95,7 @@
         {
             "name": "text",
             "transform": {
-                "position": [ 240, 60 ],
+                "position": [ 400, 300 ],
                 "rotation": 0,
                 "scale": 1
             },
