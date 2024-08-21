@@ -18,6 +18,9 @@ bool Engine::Initalize()
 
 	m_time = std::make_unique <Time>();
 	m_partSys = std::make_unique<ParticleSystem>();
+	
+	m_physics = std::make_unique<Physics>();
+	m_physics->Initialize();
 	return true;
 }
 
@@ -26,6 +29,7 @@ void Engine::Shutdown()
 	m_renderer->Shutdown();
 	m_input->Shutdown();
 	m_audio->Shutdown();
+	m_physics->Shutdown();
 
 	//display memory leaks
 	_CrtMemDumpAllObjectsSince(NULL);
@@ -49,4 +53,5 @@ void Engine::Update()
 	m_input->Update();
 	m_audio->Update();
 	m_partSys->Update(m_time->GetDeltaTime());
+	m_physics->Update(m_time->GetDeltaTime());
 }

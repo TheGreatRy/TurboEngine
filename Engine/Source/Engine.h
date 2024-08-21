@@ -46,7 +46,8 @@
 #include "Math/MathUtil.h"
 #include "Math/Random.h"
 #include "Math/Transform.h"
-
+//Physics
+#include "Physics/Physics.h"
 //standard headers
 #include <SDL.h>
 #include <fmod.hpp>
@@ -71,12 +72,15 @@ public:
 	Auydio& GetAudio() { return *m_audio; }
 	Time& GetTime() { return *m_time; }
 	ParticleSystem& GetPartSys() { return *m_partSys; }
+	Physics& GetPhysics() { return *m_physics; }
+
 
 	bool IsQuit() { return quit; }
 
 private:
 	bool quit{ false };
 
+	std::unique_ptr<Physics> m_physics;
 	std::unique_ptr<Renderer> m_renderer{ nullptr };
 	std::unique_ptr<Time> m_time{ nullptr };
 	std::unique_ptr<Input> m_input{ nullptr };
