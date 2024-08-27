@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{74c44b47-3cab-441c-8bbd-6d1f6bda8fc0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Event">
+      <UniqueIdentifier>{5f488552-e715-47de-8c70-cea137847fe1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\EAssert.h">
@@ -153,8 +156,38 @@
     <ClInclude Include="Source\Components\CircleCollisionComponent.h">
       <Filter>Source Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Event\Observer.h">
+      <Filter>Source Files\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Game\Source\Event\Event.h">
+      <Filter>Source Files\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Event\EventSystem.h">
+      <Filter>Source Files\Event</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Physics\Physics.h">
       <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Physics\RigidBody.h">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\Box2DPhysicsComponent.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Math\Rect.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\TilemapComponent.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Audio\AudioClip.h">
+      <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Audio\AudioSource.h">
+      <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\AudioComponent.h">
+      <Filter>Source Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -230,8 +263,32 @@
     <ClCompile Include="Source\Components\CircleCollisionComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Event\EventSystem.cpp">
+      <Filter>Source Files\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Event\Observer.cpp">
+      <Filter>Source Files\Event</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Physics\Physics.cpp">
       <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Physics\RigidBody.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\Box2DPhysicsComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\TilemapComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Audio\AudioClip.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Audio\AudioSource.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\AudioComponent.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

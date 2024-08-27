@@ -1,6 +1,6 @@
-#include "../Audio/Audio.h"
+#include "Audio/Audio.h"
 
-bool Auydio::Initialize()
+bool Audio::Initialize()
 {
 	FMOD::System_Create(&m_audio);
 
@@ -9,17 +9,17 @@ bool Auydio::Initialize()
     return true;
 }
 
-void Auydio::Shutdown()
+void Audio::Shutdown()
 {
 	m_audio->close();
 }
 
-void Auydio::Update()
+void Audio::Update()
 {
 	m_audio->update();
 }
 
-bool Auydio::AddSound(const std::string& name)
+bool Audio::AddSound(const std::string& name)
 {
 	if (!m_sounds[name])
 	{
@@ -39,7 +39,7 @@ bool Auydio::AddSound(const std::string& name)
 	return false;
 }
 
-bool Auydio::PlaySound(const std::string& name)
+bool Audio::PlaySound(const std::string& name)
 {
 	//check if sound exists: if not, add
 	if (m_sounds.find(name) == m_sounds.end())
@@ -53,7 +53,7 @@ bool Auydio::PlaySound(const std::string& name)
 	return true;
 }
 
-void Auydio::StopSound(const std::string& name)
+void Audio::StopSound(const std::string& name)
 {
 	m_sounds[name]->release();
 }

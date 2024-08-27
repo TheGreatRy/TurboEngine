@@ -14,5 +14,5 @@ inline float randomf(float min, float max) { return min + randomf(max - min); }
 inline Vector2 randomOnUnitCirlce()
 {
 	float angle = randomf(0, 360);
-	return Vector2{ Math::Cos(Math::DegtToRad(angle)), Math::Sin(Math::DegtToRad(angle)) };
+	return Vector2{ Math::Cos(Math::DegToRad(angle)), Math::Sin(Math::DegToRad(angle)) };
 }

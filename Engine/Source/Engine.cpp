@@ -8,7 +8,7 @@ bool Engine::Initalize()
 
 	m_renderer = std::make_unique<Renderer>();
 	m_input = std::make_unique <Input>();
-	m_audio = std::make_unique <Auydio>();
+	m_audio = std::make_unique <Audio>();
 
 	m_renderer->Initialize();
 	m_renderer->CreateWindow("Game Engine", 800, 600);

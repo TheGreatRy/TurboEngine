@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include "Components/PlayerComponent.h"
+#include "CoolGame.h"
 #include <iostream>
 #include <memory>
 #include <cstdlib>
@@ -8,26 +8,16 @@
 
 int main(int argc, char* argv[])
 {
-	std::unique_ptr<Engine> engine = std::make_unique<Engine>();
-
-	engine->Initalize();
-
-	std::unique_ptr<Scene> scene = std::make_unique<Scene>(engine.get());
 
 	File::SetFilePath("Assets");
 	std::cout << File::GetFilePath() << endl;
 
-	
-	//std::string buffer;
-	//File::ReadFile("Scenes/scene.json", buffer);
-	//std::cout << buffer << std::endl;
+	std::unique_ptr<Engine> engine = std::make_unique<Engine>();
 
-	rapidjson::Document document;
-	Json::Load("Scenes/scene.json", document);
+	engine->Initalize();
 
-	scene->Read(document);
-	scene->Initialize();
-
+	std::unique_ptr<CoolGame> game = make_unique<CoolGame>(engine.get());
+	game->Initialize();
 
 	{
 		// create texture, using shared_ptr so texture can be shared
@@ -49,25 +39,19 @@ int main(int argc, char* argv[])
 		{
 			//Update
 			engine->Update();
-			scene->Update(engine->GetTime().GetDeltaTime());
-
-			auto* actor = scene->GetActor<Actor>("text");
-			if (actor)
-			{
-				actor->Update(engine->GetTime().GetDeltaTime());
-			}
+			game->Update(engine->GetTime().GetDeltaTime());
+			
 			//Renderer
 			engine->GetRenderer().SetColor(0, 0, 0, 0);
 			engine->GetRenderer().BeginFrame();
 
 			//Draw
-			scene->Draw(engine->GetRenderer());
-
+			game->Draw(engine->GetRenderer());
 			engine->GetRenderer().EndFrame();
 		}
 	}
 
-	scene->RemoveAll();
+	game->Shutdown();
 	ResourceManager::Instance().Clear();
 	engine->Shutdown();
 	return 0;

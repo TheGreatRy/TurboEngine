@@ -7,6 +7,7 @@
 
 using namespace std;
 struct Transform;
+struct Rect;
 
 class Renderer
 {
@@ -31,12 +32,11 @@ public:
 	void DrawRect(float x, float y, float w, float h);
 
 	void DrawTexture(std::weak_ptr<class Texture> texture, float x, float y, float angle = 0.0f);
-	void DrawTexture(std::weak_ptr<class Texture> texture, const Transform& transform, bool hflip = false);
-
+	void DrawTexture(std::weak_ptr<class Texture> texture, const struct Transform& transform, bool hflip = false);
+	void DrawTexture(std::weak_ptr<class Texture> texture, const struct Transform& transform,const Rect& source, bool hflip = false);
 
 	friend class Text;
 	friend class Texture;
-	friend struct Transfrom;
 
 private:
 	SDL_Window* m_window{ nullptr };

@@ -7,8 +7,8 @@ namespace Math
 	constexpr float TwoPi = 6.28318530718f;
 	constexpr float HalfPi = 1.57079632679f;
 
-	constexpr float RadtToDeg(float radians) { return radians * (180.0f / Pi); }
-	constexpr float DegtToRad(float degrees) { return degrees * (Pi / 180.0f); }
+	constexpr float RadToDeg(float radians) { return radians * (180.0f / Pi); }
+	constexpr float DegToRad(float degrees) { return degrees * (Pi / 180.0f); }
 
 	inline float Sin(float radians)
 	{

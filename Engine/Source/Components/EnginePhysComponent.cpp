@@ -32,6 +32,11 @@ void EnginePhysComponent::ApplyForce(const Vector2& force)
 	acceleration += force / mass;
 }
 
+void EnginePhysComponent::ApplyTorque(float angle)
+{
+	owner->transform.rotation += angle;
+}
+
 void EnginePhysComponent::SetPosition(const Vector2& position)
 {
 	owner->transform.position = position;
