@@ -40,5 +40,5 @@ void TextureComponent::Write(json_t& value)
 void TextureComponent::Draw(Renderer& renderer)
 {
 	Transform transform = owner->transform;
-	renderer.DrawTexture(texture, transform);
+	renderer.DrawTexture(texture, transform, source);
 }

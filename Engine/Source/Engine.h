@@ -25,6 +25,9 @@
 #include "Components/EnginePhysComponent.h"
 #include "Components/CollisionComponent.h"
 #include "Components/CircleCollisionComponent.h"
+#include "Components/AudioComponent.h"
+#include "Components/TilemapComponent.h"
+#include "Components/Box2DPhysicsComponent.h"
 //renderer
 #include "Renderer/Renderer.h"
 #include "Renderer/ParticleSystem.h"

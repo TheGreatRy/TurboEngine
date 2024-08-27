@@ -26,7 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
-    <None Include="..\..\..\..\Downloads\tilemap.json">
+    <None Include="..\Build\Assets\Scenes\tilemap.json">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

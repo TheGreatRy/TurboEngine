@@ -6,6 +6,7 @@ class TilemapComponent : public Component
 {
 public:
 	TilemapComponent() = default;
+
 	CLASS_DECLARATION(TilemapComponent)
 	CLASS_PROTOTYPE(TilemapComponent)
 
