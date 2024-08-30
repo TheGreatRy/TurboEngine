@@ -11,7 +11,7 @@ bool Engine::Initalize()
 	m_audio = std::make_unique <Audio>();
 
 	m_renderer->Initialize();
-	m_renderer->CreateWindow("Game Engine", 800, 600);
+	m_renderer->CreateWindow("Game Engine", 960, 540);
 
 	m_input->Initialize();
 	m_audio->Initialize();
@@ -53,5 +53,5 @@ void Engine::Update()
 	m_input->Update();
 	m_audio->Update();
 	m_partSys->Update(m_time->GetDeltaTime());
-	m_physics->Update(m_time->GetDeltaTime());
+	//m_physics->Update(m_time->GetDeltaTime());
 }

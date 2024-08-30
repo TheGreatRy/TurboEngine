@@ -5,6 +5,12 @@
 class RigidBody
 {
 public:
+	enum class Shape
+	{
+		BOX,
+		CAPSULE,
+		CIRCLE
+	};
 	struct def_t
 	{
 		// body
@@ -21,6 +27,8 @@ public:
 		bool isSensor = false;
 
 		class Actor* actor{ nullptr };
+
+		Shape shape = Shape::BOX;
 	};
 
 public:

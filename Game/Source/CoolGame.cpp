@@ -5,7 +5,7 @@
 bool CoolGame::Initialize()
 {
 	m_scene = std::make_unique<Scene>(m_engine);
-	std::string sceneNames[] = { "Scenes/tilemap.json", "Scenes/scene.json" };
+	std::string sceneNames[] = { "Scenes/scene.json" };
 
 	for (auto sceneName : sceneNames)
 	{

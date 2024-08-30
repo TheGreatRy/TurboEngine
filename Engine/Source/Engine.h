@@ -20,6 +20,7 @@
 #include "Components/Component.h"
 #include "Components/RenderComponent.h"
 #include "Components/TextureComponent.h"
+#include "Components/TextureAnimationComponent.h"
 #include "Components/TextComponent.h"
 #include "Components/PhysicsComponent.h"
 #include "Components/EnginePhysComponent.h"

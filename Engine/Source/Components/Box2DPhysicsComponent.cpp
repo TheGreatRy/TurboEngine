@@ -66,9 +66,14 @@ void Box2DPhysicsComponent::Read(const json_t& value)
 	READ_DATA_NAME(value, "density", rigidBodyDef.density);
 	READ_DATA_NAME(value, "isSensor", rigidBodyDef.isSensor);
 
-	READ_DATA_STRUCT(value, gravityScale, rigidBodyDef);
+	std::string shape;
+	READ_DATA(value, shape);
+
+	if (IsEqualIgnoreCase(shape, "capsule"))  rigidBodyDef.shape = RigidBody::Shape::CAPSULE;
+	else if (IsEqualIgnoreCase(shape, "circle"))  rigidBodyDef.shape = RigidBody::Shape::CIRCLE;
 
 	READ_DATA(value, size);
+	READ_DATA(value, scale);
 }
 
 void Box2DPhysicsComponent::Write(json_t& value)

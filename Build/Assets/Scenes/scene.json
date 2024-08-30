@@ -3,129 +3,131 @@
         {
             "name": "background",
             "transform": {
-                "position": [ 400, 300 ],
+                "position": [ 480, 480],
                 "rotation": 0,
-                "scale": 1.5
-            },
-            "components": [
-                {
-                    "type": "TextureComponent",
-                    "textureName": "Textures/Green_Nebula.png"
-                }
-            ]
-
-        },
-        {
-            "name": "rocket",
-            "prototype":  true,
-            "transform": {
-                "position": [ 400, 300 ],
-                "rotation": 0,
-                "scale": 0.25
-            },
-            "components": [
-                {
-                    "type": "TextureComponent",
-                    "textureName": "Textures/RocketComponent.png"
-                },
-                {
-                    "type": "Box2DPhysicsComponent",
-                    "damping": 0.7,
-                    "gravityScale": 0,
-                    "isSensor":  true,
-                    "size": [ 32, 32 ]
-                },
-                {
-                    "type": "RocketComponent",
-                    "speed": 100
-
-                },
-                {
-                    "type": "AudioComponent",
-                    "soundName": "Audio/cowbell.wav",
-                    "playOnStart": true
-                }
-
-            ]
-        },
-        {
-            "name": "player",
-            "transform": {
-                "position": [ 60, 60 ],
-                "rotation": 0,
-                "scale": 0.25
-            },
-            "components": [
-                {
-                    "type": "TextureComponent",
-                    "textureName": "Textures/monty.jpg"
-                },
-                {
-                    "type": "Box2DPhysicsComponent",
-                    "damping": 0.7,
-                    "gravityScale": 0,
-                    "size": [ 32, 32 ]
-                },
-                {
-                    "type": "PlayerComponent",
-                    "speed": 100
-                }
-            ]
-        },
-        {
-            "name": "bat",
-            "transform": {
-                "position": [ 560, 400 ],
-                "rotation": 0,
-                "scale": 1
+                "scale": 2
             },
             "components": [
                 {
                     "type": "TextureAnimationComponent",
-                    "textureName": "Textures/bat.png",
-                    "fps": 10,
+                    "animationName": "idle",
+                    "animations": [
+                        {
+                            "name": "idle",
+                            "textureName": "Textures/background_scroll.png",
+                            "fps": 12,
+                            "loop": true,
+                            "numColumns": 5,
+                            "numRows": 60,
+                            "startFrame": 1,
+                            "endFrame": 300
+                        }
+
+                    ]
+                },
+                {
+                    "type": "AudioComponent",
+                    "soundName": "Audio/main.mp3",
+                    "playOnStart": true,
                     "loop": true,
-                    "numColumns": 4,
-                    "numRows": 1,
-                    "startFrame": 1,
-                    "endFrame": 4
+                    "volume": 1
                 }
             ]
+
         },
+
         {
-            "name": "enemy",
+            "name": "player",
             "transform": {
-                "position": [ 240, 60 ],
+                "position": [ 180, 350 ],
                 "rotation": 0,
-                "scale": 0.5
+                "scale": 3
             },
             "components": [
                 {
-                    "type": "TextureComponent",
-                    "textureName": "Textures/monty.jpg"
+                    "type": "TextureAnimationComponent",
+                    "animationName": "idle",
+                    "animations": [
+                        {
+                            "name": "idle",
+                            "textureName": "Textures/hood_run.png",
+                            "fps": 24,
+                            "loop": true,
+                            "numColumns": 24,
+                            "numRows": 1,
+                            "startFrame": 1,
+                            "endFrame": 24
+                        }
+
+                    ]
                 },
                 {
                     "type": "Box2DPhysicsComponent",
                     "damping": 0.1,
                     "gravityScale": 0,
                     "size": [ 32, 32 ]
+                },
+                {
+                    "type": "PlayerComponent",
+                    "speed": 0
+                }
+            ]
+        },
+        {
+            "name": "enemy",
+            "prototype": true,
+            "active": false,
+            "transform": {
+                "position": [ 180, 350 ],
+                "rotation": 0,
+                "scale": 3
+            },
+            "components": [
+                {
+                    "type": "TextureAnimationComponent",
+                    "animationName": "attack_up",
+                    "animations": [
+                        {
+                            "name": "attack_up",
+                            "textureName": "Textures/hood_light_atk.png",
+                            "fps": 12,
+                            "loop": false,
+                            "numColumns": 26,
+                            "numRows": 1,
+                            "startFrame": 1,
+                            "endFrame": 8
+                        }
+
+                    ]
+                },
+                {
+                    "type": "Box2DPhysicsComponent",
+                    "damping": 0.1,
+                    "gravityScale": 0,
+                    "size": [ 32, 32 ]
+                },
+                {
+                    "type": "AudioComponent",
+                    "soundName": "Audio/keypress.wav",
+                    "playOnStart": true,
+                    "volume": 5
                 }
             ]
         },
         {
             "name": "text",
             "transform": {
-                "position": [ 400, 300 ],
+                "position": [ 180, 300 ],
                 "rotation": 0,
                 "scale": 1
             },
             "components": [
                 {
                     "type": "TextComponent",
-                    "text": "Hello World",
+                    "text": "Press Up To Attack!",
                     "fontName": "Fonts/ka1.ttf",
                     "fontSize": 24,
-                    "color": [ 0, 1, 0, 1 ]
+                    "color": [ 1, 0, 0, 1 ]
                 }
             ]
         }

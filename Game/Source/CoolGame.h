@@ -6,6 +6,7 @@
 class CoolGame : public Game, Observer
 {
 public:
+
 	CoolGame() = default;
 	CoolGame(Engine* engine) : 
 		Game{ engine } 
